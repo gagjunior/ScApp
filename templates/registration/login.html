@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/w3.css' %}">
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+
+    <title>ScApp - Login</title>
+</head>
+<body>
+    
+    <div id="areaLogin" class="w3-container login">
+        <h1 class="w3-blue w3-center">-- ScApp --</h1>
+        <br>
+        <hr>
+        <p>O ScApp, foi criado com o objetivo de ajudar na gestão dos publicadores da congregação</p>
+        <p>Use suas credenciais de acesso no formulário abaixo para acessar o sistema</p>
+        <hr>
+        
+        {% load widget_tweaks%}
+        <form class="w3-container" method="post" action="{% url 'login' %}">
+            <h2>Login</h2>
+            {% csrf_token %}
+            <p>
+                <label for="txt-usuario">Usuário:</label>
+                {% render_field form.username class="w3-input" id="txt-usuario" %}
+            </p>
+            <p>
+                <label for="txt-senha">Senha:</label>
+                {% render_field form.password class="w3-input" id="txt-senha" %}
+            </p>
+            <br>
+            <button type="submit" class="w3-button w3-block w3-indigo">Acessar sistema</button>
+        </form>
+
+        {% if form.errors %}
+        <hr>
+        <div class="w3-container w3-text-red">
+            <p>Usuário ou senha incorretos</p>
+            <p>Por favor, verifique suas credencias de acesso...</p>
+        </div>
+        <hr>
+        {% endif %}
+    </div>
+
+    <footer class="login-rodape">
+        <p>&copy;ScApp</p>
+        <p id="data-atual"></p>
+    </footer>
+
+    <script src="{% static 'javascript/publicadores.js' %}"></script>
+    
+</body>
+</html>
