@@ -123,4 +123,4 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATIC_ROOT = posixpath.join(*(BASE_DIR.split(os.path.sep) + ['static']))
 
-LOGIN_REDIRECT_URL = 'publicadores/'
+LOGIN_REDIRECT_URL = '/publicadores/'
