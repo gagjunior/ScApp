@@ -3,9 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/w3.css' %}">
+    <link rel="stylesheet" href="{% static 'css/rodape.css' %}">
+    <title>ScApp - {{ titulo }}</title>
 </head>
 <body>
-    
+
+    {% block content %}{% endblock %}
+
+    <footer class="rodape">
+        <p>&copy;ScApp</p>
+        <p id="data-atual"></p>
+    </footer>
+    <script src="{% static 'javascript/publicadores.js' %}"></script>    
 </body>
 </html>

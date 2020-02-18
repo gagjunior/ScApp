@@ -1,0 +1,13 @@
+.rodape{
+    margin-top: 80px;
+    margin-left: 10px;
+    margin-right: 10px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 10px;
+    background-color: dodgerblue;
+    color: white;
+    font-weight: 100;    
+}
