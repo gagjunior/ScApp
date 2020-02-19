@@ -1,3 +1,14 @@
-#menu-inicio{
-    margin-top: 5%;
+@media screen and (max-width: 600px){
+    #menu-inicio{
+        margin-top: 1.5%;    
+        max-width: 100%;
+    }
+}
+
+#menu-inicio{        
+    max-width: 33.33%;
+}
+
+.menu_item{
+    margin-top: 32px;
 }
