@@ -12,3 +12,9 @@
 .menu_item{
     margin-top: 32px;
 }
+
+hr{
+    color: blue;
+    background-color: blue;
+    height: 2px;
+}
