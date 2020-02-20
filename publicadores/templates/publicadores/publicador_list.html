@@ -1,16 +1,22 @@
 {% extends "layout.html" %}
 
 {% block content %}
-<h1>Lista de Publicadores</h1>
+<div class="w3-row w3-container">
+    <h1>Lista de Publicadores</h1>
 
-{% if publicador_list %}
+    {% if publicador_list %}
 
-{% for publicador in publicador_list %}
+    {% for publicador in publicador_list %}
 
-<p>{{ publicador.nome_publicador }}</p>
+    <p>{{ publicador.nome_publicador }}</p>
 
-{% endfor %}
+    {% endfor %}
 
-{% endif %}
+    {% else %}
 
+    <p>Não há publicadores cadastrados para listar...</p>
+
+    {% endif %}
+
+</div>
 {% endblock %}
