@@ -1,5 +1,16 @@
 {% extends "layout.html" %}
 
 {% block content %}
+<h1>Lista de Publicadores</h1>
+
+{% if publicador_list %}
+
+{% for publicador in publicador_list %}
+
+<p>{{ publicador.nome_publicador }}</p>
+
+{% endfor %}
+
+{% endif %}
 
 {% endblock %}
