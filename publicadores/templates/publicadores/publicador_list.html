@@ -7,9 +7,10 @@
     {% if publicador_list %}
 
     {% for publicador in publicador_list %}
-
-    <p>{{ publicador.nome_publicador }}</p>
-
+    <div class="w3-col m3 w3-green w3-center">
+        <p>{{ publicador.nome_publicador }}</p>
+        <p>{{ publicador.grupo_pub }}</p>
+    </div>
     {% endfor %}
 
     {% else %}
