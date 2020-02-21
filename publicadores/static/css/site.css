@@ -1,10 +1,40 @@
+* {
+    box-sizing: border-box;
+}
+
+.menu_nav{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: indigo;
+}
+
+.menu_nav li{
+    float: left;
+}
+
+.menu_nav a{
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 14px;
+    text-decoration: none;
+}
+
+.menu_nav a:hover{
+    background-color: rgb(160, 73, 223);
+}
+
 .rodape{
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: space-around;
     background-color: indigo;
     color: white;
+    margin-top: 32px;
+    padding: 8px;    
 }
 
 @media only screen and (min-width: 768px){
@@ -12,5 +42,9 @@
         max-width: 33.33%;
         margin-left: auto;
         margin-right: auto;
+    }
+
+    .menu_inicio{
+        max-width: 33.33%;
     }
 }
