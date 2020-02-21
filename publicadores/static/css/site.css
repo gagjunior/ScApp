@@ -2,6 +2,14 @@
     box-sizing: border-box;
 }
 
+.cabecalho{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding: 16px;
+    background-color: indigo;
+}
+
 .menu_nav{
     list-style-type: none;
     margin: 0;
