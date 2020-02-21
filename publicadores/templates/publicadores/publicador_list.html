@@ -1,18 +1,27 @@
 {% extends "layout.html" %}
 
 {% block content %}
-<div class="w3-row w3-container">
+<div class="W3-container">
     <h1>Lista de Publicadores</h1>
-
     {% if publicador_list %}
-
-    {% for publicador in publicador_list %}
-    <div class="w3-col m3 w3-green w3-center">
-        <p>{{ publicador.nome_publicador }}</p>
-        <p>{{ publicador.grupo_pub }}</p>
+    <div class="w3-responsive">
+        <table class="w3-table-all">
+            <thead>
+                <tr>
+                    <th>Nome do Publicador</th>
+                    <th>Grupo</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for publicador in publicador_list %}
+                <tr>
+                    <td>{{ publicador.nome_publicador }}</td>
+                    <td>{{ publicador.grupo_pub }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
     </div>
-    {% endfor %}
-
     {% else %}
 
     <p>Não há publicadores cadastrados para listar...</p>
