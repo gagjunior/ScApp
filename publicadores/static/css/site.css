@@ -1,0 +1,16 @@
+.rodape{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    background-color: indigo;
+    color: white;
+}
+
+@media only screen and (min-width: 768px){
+    .login{
+        max-width: 33.33%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
