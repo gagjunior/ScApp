@@ -14,12 +14,10 @@
 </head>
 <body>
     
-    <div class="w3-container" style="margin-top: 8px;">
-        <div class="w3-bar w3-border w3-light-grey" style="padding: 10px;">        
-            <a href="{% url 'index' %}" class="w3-bar-item w3-button">Menu</a>
-            <a class="w3-bar-item w3-right">Usuário: {{ user.get_username }}</a>
-        </div>
-    </div>
+    <ul class="menu_nav">
+        <li><a href="{% url 'index' %}">Menu</a></li>
+        <li style="float: right;"><a>Usuário: {{ user.get_username }}</a></li>
+    </ul>
     
     {% block content %}{% endblock %}
     
