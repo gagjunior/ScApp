@@ -45,6 +45,11 @@
     padding: 8px;    
 }
 
+.tabela{
+    display: flex;
+    flex-direction: column;
+}
+
 @media only screen and (min-width: 768px){
     .login{
         max-width: 33.33%;
@@ -54,5 +59,9 @@
 
     .menu_inicio{
         max-width: 33.33%;
+    }
+
+    .desktop{
+        max-width: 33.33%;            
     }
 }

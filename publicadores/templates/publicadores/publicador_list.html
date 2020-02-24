@@ -5,16 +5,16 @@
     <h1>Lista de Publicadores</h1>
     {% if publicador_list %}
     <div class="w3-responsive">
-        <table class="w3-table-all">
+        <table id="tblPub" class="w3-table-all w3-hoverable">
             <thead>
-                <tr>
-                    <th>Nome do Publicador</th>
+                <tr class="w3-indigo">
+                    <th onclick="w3.sortHTML('tblPub', '.item', 'td:nth-child(1)')">Nome do Publicador</th>
                     <th>Grupo</th>
                 </tr>
             </thead>
             <tbody>
                 {% for publicador in publicador_list %}
-                <tr>
+                <tr class="item">
                     <td>{{ publicador.nome_publicador }}</td>
                     <td>{{ publicador.grupo_pub }}</td>
                 </tr>
