@@ -8,14 +8,14 @@
         <table id="tblPub" class="w3-table-all w3-hoverable">
             <thead>
                 <tr class="w3-indigo">
-                    <th onclick="w3.sortHTML('tblPub', '.item', 'td:nth-child(1)')">Nome do Publicador</th>
-                    <th>Grupo</th>
+                    <th class="tabela" onclick="w3.sortHTML('#tblPub', '.item', 'td:nth-child(1)')">Nome do Publicador</th>
+                    <th class="tabela" onclick="w3.sortHTML('#tblPub', '.item', 'td:nth-child(2)')">Grupo</th>
                 </tr>
             </thead>
             <tbody>
                 {% for publicador in publicador_list %}
                 <tr class="item">
-                    <td>{{ publicador.nome_publicador }}</td>
+                    <td><a href="{{ publicador.get_absolute_url }}">{{ publicador.nome_publicador }}</a></td>
                     <td>{{ publicador.grupo_pub }}</td>
                 </tr>
                 {% endfor %}

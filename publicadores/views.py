@@ -22,7 +22,15 @@ class PublicadoresListView(LoginRequiredMixin, generic.ListView):
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super(PublicadoresListView, self).get_context_data(**kwargs)
-        context['titulo'] = 'Publicadores'
+        context['titulo'] = 'Lista de Publicadores'
+        return context
+
+class PublicadoresDetailView(generic.DetailView):
+    model = Publicador
+
+    def get_context_data(self, **kwargs):
+        context = super(PublicadoresDetailView, self).get_context_data(**kwargs)
+        context['titulo'] = 'Publicador'
         return context
 
 
