@@ -45,6 +45,10 @@
     padding: 8px;    
 }
 
+.tabela{
+    cursor: pointer;
+}
+
 @media only screen and (min-width: 768px){
     .login{
         max-width: 33.33%;
@@ -54,5 +58,9 @@
 
     .menu_inicio{
         max-width: 33.33%;
+    }
+
+    .desktop{
+        max-width: 33.33%;            
     }
 }
