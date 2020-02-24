@@ -1,16 +1,32 @@
 {% extends "layout.html" %}
 
 {% block content %}
-<h1>Lista de Publicadores</h1>
+<div class="W3-container">
+    <h1>Lista de Publicadores</h1>
+    {% if publicador_list %}
+    <div class="w3-responsive">
+        <table id="tblPub" class="w3-table-all w3-hoverable">
+            <thead>
+                <tr class="w3-indigo">
+                    <th class="tabela" onclick="w3.sortHTML('#tblPub', '.item', 'td:nth-child(1)')">Nome do Publicador</th>
+                    <th class="tabela" onclick="w3.sortHTML('#tblPub', '.item', 'td:nth-child(2)')">Grupo</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for publicador in publicador_list %}
+                <tr class="item">
+                    <td><a href="{{ publicador.get_absolute_url }}">{{ publicador.nome_publicador }}</a></td>
+                    <td>{{ publicador.grupo_pub }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    {% else %}
 
-{% if publicador_list %}
+    <p>Não há publicadores cadastrados para listar...</p>
 
-{% for publicador in publicador_list %}
+    {% endif %}
 
-<p>{{ publicador.nome_publicador }}</p>
-
-{% endfor %}
-
-{% endif %}
-
+</div>
 {% endblock %}

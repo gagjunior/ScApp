@@ -5,13 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     {% load static %}
     <link rel="stylesheet" href="{% static 'css/w3.css' %}">
-    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+    <link rel="stylesheet" href="{% static 'css/site.css' %}">
 
     <title>ScApp - Login</title>
 </head>
 <body>
+
+    <header class="cabecalho">
+        <p></p>
+    </header>
     
-    <div id="areaLogin" class="w3-container login">
+    <div class="w3-container login">
         <h1 class="w3-blue w3-center">-- ScApp --</h1>
         <br>
         <hr>
@@ -45,7 +49,7 @@
         {% endif %}
     </div>
 
-    <footer class="login-rodape">
+    <footer class="rodape">
         <p>&copy;ScApp</p>
         <p id="data-atual"></p>
     </footer>

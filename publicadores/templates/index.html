@@ -3,12 +3,12 @@
 
 {% block content %}
 <!-- Menu Principal -->
-<div id="menu-inicio" class="w3-container">
+<div class="menu_inicio w3-container w3-row" style="margin-top: 16px;">
 
     <!-- Sub menu de Relatórios -->
-    <div id="menu_relat" class="menu_item w3-card-4">
+    <div class="w3-card menu_item">
         <header class="w3-container w3-indigo">
-            <h2>Relatórios</h2>
+            <h3>Relatórios</h3>
         </header>
         <div class="w3-container">
             <ul class="w3-ul">
@@ -16,14 +16,14 @@
                 <li class="w3-hover-light-grey"><a href="{% url 'publicadores' %}">Lista de Publicadores</a></li>
                 <li class="w3-hover-light-grey"><a href="#">Lista de Atividades</a></li>
             </ul>           
-        </div>        
+        </div>              
     </div>
     <!-- fim sub menu relatórios -->
-    <hr>
-
-    <div id="menu_adm" class="menu_item w3-card-4" style="margin-top: 16px;">
+    
+    <hr>    
+    <div class="w3-card menu_item">
         <header class="w3-container w3-indigo">
-            <h2>Administração</h2>            
+            <h3>Administração</h3>            
         </header>
         <div class="w3-container">
             <ul class="w3-ul">
