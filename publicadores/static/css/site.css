@@ -49,17 +49,12 @@
     cursor: pointer;
 }
 
-@media only screen and (min-width: 768px){
+@media only screen and (min-width: 1024px){
     .login{
         max-width: 33.33%;
         margin-left: auto;
         margin-right: auto;
     }
-
-    .menu_inicio{
-        max-width: 33.33%;
-    }
-
     .desktop{
         max-width: 33.33%;            
     }
