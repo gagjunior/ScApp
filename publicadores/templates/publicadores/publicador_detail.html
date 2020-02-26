@@ -3,15 +3,26 @@
 {% block content %}
 
 <div class="w3-container">
-    <h1>Publicador:</h1>
+    <h1>Publicador</h1>
+    <hr/>
     <div class="w3-card-4">
-        <header class="w3-container w3-blue"><h2>{{publicador.nome_publicador}}</h2></header>
+        <header class="w3-container w3-blue">
+            <h2>{{publicador.nome_publicador}}</h2>
+        </header>
         <div class="w3-container">
-            <p>Genero: {{publicador.genero}}</p>
-            <p>Data de nascimento: {{publicador.data_nascimento}}</p>
+            <p><b>Genero:</b> {{publicador.get_genero_display}}</p>
+            <p><b>Data de nascimento:</b> {{publicador.data_nascimento}}</p>
+            <p><b>Esperança:</b> {{publicador.get_esperanca_pub_display}}</p>
+            <p><b>Data de Batismo:</b> {{publicador.data_batismo}}</p>
+            <p><b>Atuação:</b> {{publicador.get_atuacao_pub_display}}</p>
+            <p><b>Privilégio:</b> {{publicador.get_privilegio_pub_display}}</p>
+            <p><b>Grupo:</b> {{publicador.grupo_pub}}</p>
+            <p><b>Telefone Fixo:</b> {{publicador.tel_fixo}}</p>
+            <p><b>Telefone Celular:</b> {{publicador.tel_celular}}</p>
+            <p><b>Endereço:</b> {{publicador.endereco_pub}}</p>
         </div>
     </div>
+    <hr/>
 </div>
-
 
 {% endblock %}
