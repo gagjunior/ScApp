@@ -9,7 +9,8 @@
         <table id="tblPub" class="w3-table-all w3-hoverable">
             <thead>
                 <tr class="w3-indigo">
-                    <th class="tabela" onclick="w3.sortHTML('#tblPub', '.item', 'td:nth-child(1)')">Nome do Publicador
+                    {% load static %}
+                    <th class="tabela" onclick="w3.sortHTML('#tblPub', '.item', 'td:nth-child(1)')">Nome do Publicador <img id="order" src="{% static 'imagens/seta_cima.png' %}">
                     </th>
                     <th class="tabela" onclick="w3.sortHTML('#tblPub', '.item', 'td:nth-child(2)')">Grupo</th>
                 </tr>

@@ -159,7 +159,7 @@ w3.filterHTML = function (id, sel, filter) {
 };
 w3.sortHTML = function (id, sel, sortvalue) {
     var a, b, i, ii, y, bytt, v1, v2, cc, j;
-    a = w3.getElements(id);
+    a = w3.getElements(id);    
     for (i = 0; i < a.length; i++) {
         for (j = 0; j < 2; j++) {
             cc = 0;
@@ -192,6 +192,7 @@ w3.sortHTML = function (id, sel, sortvalue) {
             if (cc > 0) { break; }
         }
     }
+        
 };
 w3.slideshow = function (sel, ms, func) {
     var i, ss, x = w3.getElements(sel), l = x.length;
