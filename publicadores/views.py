@@ -16,6 +16,11 @@ def index(request):
 class GruposListView(LoginRequiredMixin, generic.ListView):
     model= Grupo
 
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super(GruposListView, self).get_context_data(**kwargs)
+        context['titulo'] = 'Lista de Grupos'
+        return context
+
 
 class PublicadoresListView(LoginRequiredMixin, generic.ListView):
     model = Publicador
@@ -25,7 +30,7 @@ class PublicadoresListView(LoginRequiredMixin, generic.ListView):
         context['titulo'] = 'Lista de Publicadores'
         return context
 
-class PublicadoresDetailView(generic.DetailView):
+class PublicadoresDetailView(LoginRequiredMixin, generic.DetailView):
     model = Publicador
 
     def get_context_data(self, **kwargs):

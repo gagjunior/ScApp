@@ -1,0 +1,47 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="w3-container">
+    <h1>Lista de Grupos</h1>
+    {% if grupo_list %}
+    <div class="w3-responsive">
+        <input oninput="w3.filterHTML('#tblPub', '.item', this.value)" class="w3-input"
+            placeholder="Digite um valor de qualquer coluna para filtrar..." style="margin-bottom: 16px;">
+        <table id="tblPub" class="w3-table-all w3-hoverable">
+            <thead>
+                <tr class="w3-indigo">
+                    {% load static %}
+                    <th class="tabela" onclick="w3.sortHTML('#tblPub', '.item', 'td:nth-child(1)');alteraImagem()">Nome
+                        do Grupo <img id="order" src="{% static 'imagens/seta_baixo.png' %}">
+                    </th>
+                    <th>Dirigente</th>
+                    <th>Local do Grupo</th>
+                    <th>Endereço</th>
+                    <th>Dia da Saída</th>
+                    <th>Horário</th>
+                    <th>Observação</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for grupo in grupo_list %}
+                <tr class="item">
+                    <td>{{grupo.nome_grupo}}</td>
+                    <td>{{grupo.dirigente}}</td>
+                    <td>{{grupo.local_grupo}}</td>
+                    <td>{{grupo.endereco_grupo}}</td>
+                    <td>{{grupo.get_dia_saida_display}}</td>
+                    <td>{{grupo.horario}}</td>
+                    <td>{{grupo.obs}}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    {% else %}
+
+    <p>Não há grupos cadastrados para listar...</p>
+
+    {% endif %}
+
+</div>
+{% endblock %}

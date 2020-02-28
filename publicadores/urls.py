@@ -3,7 +3,13 @@ from publicadores import views
 
 
 urlpatterns = [
+    #Url inicial
     path('', views.index, name='index'),
+
+    #Urls referente aos publicadores
     path('publicadores', views.PublicadoresListView.as_view(), name='publicadores'),
     path('publicador/<pk>', views.PublicadoresDetailView.as_view(), name='publicador-detail'),
+
+    #Urls referente aos grupos
+    path('grupos/', views.GruposListView.as_view(), name='grupos'),
 ]

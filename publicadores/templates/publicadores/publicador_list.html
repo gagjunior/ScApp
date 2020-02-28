@@ -5,12 +5,14 @@
     <h1>Lista de Publicadores</h1>
     {% if publicador_list %}
     <div class="w3-responsive">
-        <input oninput="w3.filterHTML('#tblPub', '.item', this.value)" class="w3-input" placeholder="Digite o nome do publicador ou do grupo para filtrar..." style="margin-bottom: 16px;">
+        <input oninput="w3.filterHTML('#tblPub', '.item', this.value)" class="w3-input"
+            placeholder="Digite o nome do publicador ou do grupo para filtrar..." style="margin-bottom: 16px;">
         <table id="tblPub" class="w3-table-all w3-hoverable">
             <thead>
                 <tr class="w3-indigo">
                     {% load static %}
-                    <th class="tabela" onclick="w3.sortHTML('#tblPub', '.item', 'td:nth-child(1)');alteraImagem()">Nome do Publicador <img id="order" src="{% static 'imagens/seta_baixo.png' %}">
+                    <th class="tabela" onclick="w3.sortHTML('#tblPub', '.item', 'td:nth-child(1)');alteraImagem()">Nome
+                        do Publicador <img id="order" src="{% static 'imagens/seta_baixo.png' %}">
                     </th>
                     <th class="tabela" onclick="w3.sortHTML('#tblPub', '.item', 'td:nth-child(2)')">Grupo</th>
                 </tr>
@@ -18,8 +20,8 @@
             <tbody>
                 {% for publicador in publicador_list %}
                 <tr class="item">
-                    <td><a href="{{ publicador.get_absolute_url }}">{{ publicador.nome_publicador }}</a></td>
-                    <td>{{ publicador.grupo_pub }}</td>
+                    <td><a href="{{ publicador.get_absolute_url }}">{{publicador.nome_publicador}}</a></td>
+                    <td><a href="{% url 'grupos' %}">{{publicador.grupo_pub}}</a></td>
                 </tr>
                 {% endfor %}
             </tbody>
