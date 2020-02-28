@@ -7,7 +7,7 @@ let dataFormatada = `${dia}/${mes}/${ano}`
 
 document.getElementById('data-atual').innerText = dataFormatada
 
-var currentImgIndex=1
+var currentImgIndex=0
 var igmSrcArray = [
     "/static/imagens/seta_cima.png",
     "/static/imagens/seta_baixo.png"    
