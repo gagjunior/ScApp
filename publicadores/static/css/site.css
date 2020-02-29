@@ -49,6 +49,10 @@
     cursor: pointer;
 }
 
+.nao-informado{
+    color: red;
+}
+
 @media only screen and (min-width: 1024px){
     .login{
         max-width: 33.33%;
