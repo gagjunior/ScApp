@@ -4,9 +4,9 @@ from django.db import models
 from django.urls import reverse
 
 
-
 data_atual = date.today()
 mes_anterior = data_atual.month - 1
+ano_atual = data_atual.year
 
 class Grupo(models.Model):
     id_grupo = models.UUIDField(primary_key=True, default=uuid.uuid4)
@@ -89,7 +89,7 @@ class Atividade(models.Model):
         (9, 'Setembro'), (10, 'Outubro'), (11, 'Novembro'), (12, 'Dezembro')
     )
     mes_relatorio = models.IntegerField(verbose_name='Mês', choices= MES, default=mes_anterior)
-    ano_relatorio = models.IntegerField(verbose_name='Ano')
+    ano_relatorio = models.IntegerField(verbose_name='Ano', default=ano_atual)
     publicador = models.ForeignKey('Publicador', on_delete=models.DO_NOTHING)
     publicacoes = models.IntegerField(verbose_name='Publicações')
     videos = models.IntegerField(verbose_name='Vídeos')
