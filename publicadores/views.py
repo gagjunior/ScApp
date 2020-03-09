@@ -41,4 +41,9 @@ class PublicadoresDetailView(LoginRequiredMixin, generic.DetailView):
 
 class AtividadesListView(LoginRequiredMixin, generic.ListView):
     model = Atividade
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super(AtividadesListView, self).get_context_data(**kwargs)
+        context['titulo'] = 'Lista de Atividades'
+        return context
     

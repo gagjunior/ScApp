@@ -8,8 +8,11 @@ urlpatterns = [
 
     #Urls referente aos publicadores
     path('publicadores', views.PublicadoresListView.as_view(), name='publicadores'),
-    path('publicador/<pk>', views.PublicadoresDetailView.as_view(), name='publicador-detail'),
+    path('publicador/<pk>', views.PublicadoresDetailView.as_view(), name='publicador-detail'),    
 
     #Urls referente aos grupos
     path('grupos/', views.GruposListView.as_view(), name='grupos'),
+
+    #Urls referente as atividades
+    path('atividades/', views.AtividadesListView.as_view(), name='atividades'),
 ]

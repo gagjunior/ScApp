@@ -2,14 +2,13 @@ import uuid
 from datetime import date
 from django.db import models
 from django.urls import reverse
+from publicadores import data_atual, LISTA_MES
 
-
-data_atual = date.today()
 mes_anterior = data_atual.month - 1
 ano_atual = data_atual.year
 
 class Grupo(models.Model):
-    id_grupo = models.UUIDField(primary_key=True, default=uuid.uuid4)
+    id_grupo = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     nome_grupo = models.CharField(verbose_name='Nome do Grupo', max_length=60)
     dirigente = models.CharField(verbose_name='Dirigente do Gurpo', max_length=60)
     local_grupo = models.CharField(verbose_name='Local do Grupo', max_length=80)
@@ -36,7 +35,7 @@ class Grupo(models.Model):
 
 
 class Publicador(models.Model):
-    id_publicador = models.UUIDField(primary_key=True, default=uuid.uuid4)
+    id_publicador = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     nome_publicador = models.CharField(verbose_name='Nome do Publicador', max_length=60)
 
     GENERO = (
@@ -81,14 +80,9 @@ class Publicador(models.Model):
 
 
 class Atividade(models.Model):
-    id_atividade = models.UUIDField(primary_key=True, default=uuid.uuid4)
-
-    MES = (
-        (1, 'Janeiro'), (2, 'Fevereiro'), (3, 'Março'), (4, 'Abril'),
-        (5, 'Maio'), (6, 'Junho'), (7, 'Julho'), (8, 'Agosto'),
-        (9, 'Setembro'), (10, 'Outubro'), (11, 'Novembro'), (12, 'Dezembro')
-    )
-    mes_relatorio = models.IntegerField(verbose_name='Mês', choices= MES, default=mes_anterior)
+    id_atividade = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+   
+    mes_relatorio = models.IntegerField(verbose_name='Mês', choices= LISTA_MES, default=mes_anterior)
     ano_relatorio = models.IntegerField(verbose_name='Ano', default=ano_atual)
     publicador = models.ForeignKey('Publicador', on_delete=models.DO_NOTHING)
     publicacoes = models.IntegerField(verbose_name='Publicações')
