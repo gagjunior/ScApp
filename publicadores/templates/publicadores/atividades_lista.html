@@ -1,0 +1,23 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+
+{% load widget_tweaks%}
+
+<form method="POST" class="w3-row-padding">
+    {% csrf_token %}
+    {% load static %}
+    <div class="w3-third">
+        <label for="{{ form.mes_relatorio.id_for_label }}">Mês: </label>
+        {% render_field form.mes_relatorio class="w3-input w3-border" %}
+    </div>
+    <div class="w3-third">
+        <label for="{{ form.ano_relatorio.id_for_label }}">Ano: </label>
+        {% render_field form.ano_relatorio class="w3-input w3-border" %}
+    </div>
+    <div class="w3-third">
+        <button type="submit" class="w3-button w3-round-xlarge w3-yellow botao_pesq"><img src="{% static 'imagens/lupa_pesquisa.png' %}">Pesquisar</button>
+    </div>
+</form>
+
+{% endblock %}

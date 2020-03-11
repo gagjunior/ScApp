@@ -14,5 +14,5 @@ urlpatterns = [
     path('grupos/', views.GruposListView.as_view(), name='grupos'),
 
     #Urls referente as atividades
-    path('atividades/', views.AtividadesListView.as_view(), name='atividades'),
+    path('atividades/', views.lista_atividades, name='atividades_lista'),
 ]

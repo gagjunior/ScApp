@@ -3,6 +3,7 @@ from django.views import generic
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from publicadores.models import Grupo, Publicador, Atividade
+from publicadores.forms import AtividadeForm
 
 
 @login_required
@@ -14,7 +15,9 @@ def index(request):
 
 
 def lista_atividades(request):
-    pass
+    form = AtividadeForm()
+    return render(request, 'publicadores/atividades_lista.html', {'form':form})
+
 
 class GruposListView(LoginRequiredMixin, generic.ListView):
     model= Grupo
