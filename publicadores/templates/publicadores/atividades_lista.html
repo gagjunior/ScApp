@@ -2,21 +2,31 @@
 
 {% block content %}
 
-{% load widget_tweaks%}
 
-<form method="POST" class="w3-row-padding">
+
+<form method="POST" class="w3-row">
     {% csrf_token %}
+    {% load widget_tweaks%}
     {% load static %}
-    <div class="w3-third">
-        <label for="{{ form.mes_relatorio.id_for_label }}">Mês: </label>
-        {% render_field form.mes_relatorio class="w3-input w3-border" %}
+    <div class="w3-col w3-container barra-pesq">
+        <label for="form.id_for_label">Mês Inicio:</label>
+        {% render_field form.mes_inicio class="w3-select" %}
     </div>
-    <div class="w3-third">
-        <label for="{{ form.ano_relatorio.id_for_label }}">Ano: </label>
-        {% render_field form.ano_relatorio class="w3-input w3-border" %}
+    <div class="w3-col w3-container barra-pesq">
+        <label for="form.id_for_label">Ano Inicio:</label>
+        {% render_field form.ano_inicio class="w3-input" %}
     </div>
-    <div class="w3-third">
-        <button type="submit" class="w3-button w3-round-xlarge w3-yellow botao_pesq"><img src="{% static 'imagens/lupa_pesquisa.png' %}">Pesquisar</button>
+    <div class="w3-col w3-container barra-pesq">
+        <label for="form.id_for_label">Mês Fim:</label>
+        {% render_field form.mes_fim class="w3-select" %}
+    </div>
+    <div class="w3-col w3-container barra-pesq">
+        <label for="form.id_for_label">Ano Fim:</label>
+        {% render_field form.ano_fim class="w3-input" %}
+    </div>
+    <div class="w3-col w3-container barra-pesq">
+        <button type="submit" class="w3-button w3-round-xlarge w3-yellow botao_pesq"><img
+                src="{% static 'imagens/lupa_pesquisa.png' %}"> Pesquisar</button>
     </div>
 </form>
 
