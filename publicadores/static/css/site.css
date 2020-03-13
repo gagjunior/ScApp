@@ -54,17 +54,8 @@
     color: red;
 }
 
-.botao_pesq{
-    margin-top: 12px;
-}
-
-.barra-pesq{
-    margin-top: 12px;
-    width: 20%;
-}
-
-.barra-pesq > label{
-    font-weight: bold;    
+.item-pesq{
+    margin-top: 20px;
 }
 
 @media only screen and (min-width: 1024px){
@@ -76,4 +67,5 @@
     .desktop{
         max-width: 40%;            
     }
+
 }

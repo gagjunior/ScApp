@@ -2,40 +2,47 @@
 
 {% block content %}
 
-<form method="POST" class="w3-row">
+<form method="POST" class="w3-cell-row">
     {% csrf_token %}
     {% load widget_tweaks%}
     {% load static %}
-    <div class="w3-col w3-container barra-pesq">                
+    <div class="w3-container w3-cell w3-mobile">
         <label for="form.id_for_label">Mês Inicio</label>
         {% render_field form.mes_inicio class="w3-select" %}
     </div>
-    <div class="w3-col w3-container barra-pesq">        
+    <div class="w3-container w3-cell w3-mobile">
         <label for="form.id_for_label">Ano Inicio</label>
         {% render_field form.ano_inicio class="w3-input" %}
     </div>
-    <div class="w3-col w3-container barra-pesq">        
+    <div class="w3-container w3-cell w3-mobile">
         <label for="form.id_for_label">Mês Fim:</label>
         {% render_field form.mes_fim class="w3-select" %}
     </div>
-    <div class="w3-col w3-container barra-pesq">        
+    <div class="w3-container w3-cell w3-mobile">
         <label for="form.id_for_label">Ano Fim:</label>
         {% render_field form.ano_fim class="w3-input" %}
     </div>
-    <div class="w3-col w3-container barra-pesq">
-        <button type="submit" class="w3-button w3-round-xlarge w3-yellow botao_pesq"><img
+    <div class="w3-container w3-cell w3-mobile">
+        <button type="submit" class="w3-button w3-blue item-pesq"><img
                 src="{% static 'imagens/lupa_pesquisa.png' %}"> Pesquisar</button>
     </div>
 </form>
 
 {% if atividades_flt %}
 
-<table>
+<div class="w3-responsive">
+<table class="w3-table-all" style="margin-top: 15px;">
     <thead>
-        <tr>
+        <tr class="w3-indigo">
             <th>Mês</th>
             <th>Ano</th>
             <th>Publicador</th>
+            <th>Publicações</th>
+            <th>Videos</th>
+            <th>Horas</th>
+            <th>Revisitas</th>
+            <th>Estudos</th>
+            <th>Observação</th>
         </tr>
     </thead>
     <tbody>
@@ -44,10 +51,17 @@
             <td>{{ atividade.get_mes_relatorio_display }}</td>
             <td>{{ atividade.ano_relatorio }}</td>
             <td>{{ atividade.publicador }}</td>
+            <td>{{ atividade.publicacoes }}</td>
+            <td>{{ atividade.videos }}</td>
+            <td>{{ atividade.horas }}</td>
+            <td>{{ atividade.revisitas }}</td>
+            <td>{{ atividade.estudos }}</td>
+            <td>{{ atividade.obs_relatorio }}</td>
         </tr>
         {% endfor %}
     </tbody>
 </table>
+</div>
 
 {% endif %}
 
