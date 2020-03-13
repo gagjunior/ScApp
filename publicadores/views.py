@@ -14,9 +14,32 @@ def index(request):
     return render(request, 'index.html', context=context)
 
 
-def lista_atividades(request):
-    form = AtividadeForm()
-    return render(request, 'publicadores/atividades_lista.html', {'form':form})
+@login_required
+def lista_atividades(request):        
+    
+    if request.method == "POST":
+        form = AtividadeForm(request.POST)
+
+        if form.is_valid():
+            mes_inicio = form.cleaned_data['mes_inicio']
+            ano_inicio = form.cleaned_data['ano_inicio']
+            mes_fim = form.cleaned_data['mes_fim']
+            ano_fim = form.cleaned_data['ano_fim']
+
+            atividades_flt = Atividade.objects.filter(mes_relatorio__gte=mes_inicio, ano_relatorio__gte=ano_inicio, mes_relatorio__lte=mes_fim, ano_relatorio__lte=ano_fim)
+
+            context = {
+                'form':form,
+                'atividades_flt':atividades_flt
+            }            
+
+    else:
+        form = AtividadeForm()
+        context = {'form':form}
+        
+    return render(request, 'publicadores/atividades_lista.html', context)
+
+    
 
 
 class GruposListView(LoginRequiredMixin, generic.ListView):
