@@ -17,6 +17,7 @@ function alteraImagem(){
     if(currentImgIndex == igmSrcArray.length){
         currentImgIndex=0
     }
+    
     document.getElementById("order").src=igmSrcArray[currentImgIndex]
     currentImgIndex++
     

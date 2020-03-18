@@ -30,7 +30,8 @@ def lista_atividades(request):
 
             context = {
                 'form':form,
-                'atividades_flt':atividades_flt
+                'atividades_flt':atividades_flt,
+                'titulo':'Lista de Atividades'
             }            
 
     else:
