@@ -7,19 +7,20 @@ let dataFormatada = `${dia}/${mes}/${ano}`
 
 document.getElementById('data-atual').innerText = dataFormatada
 
-var currentImgIndex=0
+var currentImgIndex = 0
 var igmSrcArray = [
     "/static/imagens/seta_cima.png",
-    "/static/imagens/seta_baixo.png"    
+    "/static/imagens/seta_baixo.png"
 ]
 
-function alteraImagem(){
-    if(currentImgIndex == igmSrcArray.length){
-        currentImgIndex=0
+function alteraImagem(id) {
+
+    if (currentImgIndex == igmSrcArray.length) {
+        currentImgIndex = 0
     }
-    
-    document.getElementById("order").src=igmSrcArray[currentImgIndex]
+
+    document.getElementById(id).src = igmSrcArray[currentImgIndex]
     currentImgIndex++
-    
+
 }
 

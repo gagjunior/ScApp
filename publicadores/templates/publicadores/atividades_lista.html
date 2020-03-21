@@ -2,7 +2,7 @@
 
 {% block content %}
 
-<form method="POST" class="w3-cell-row">
+<form method="POST" class="w3-cell-row" style="margin-bottom: 12px;">
     {% csrf_token %}
     {% load widget_tweaks%}
     {% load static %}
@@ -30,16 +30,16 @@
 
 {% if atividades_flt %}
 
-<div class="w3-responsive">
+<div class="w3-responsive">    
     <input oninput="w3.filterHTML('#tblAtv', '.item', this.value)" class="w3-input"
         placeholder="Digite um valor de qualquer coluna para filtrar..." style="margin-bottom: 16px;">
     <table id="tblAtv" class="w3-table-all w3-hoverable" style="margin-top: 15px;">
         <thead>
             <tr class="w3-indigo">
                 {% load static %}
-                <th class="tabela" onclick="w3.sortHTML('#tblAtv', '.item', 'td:nth-child(1)');alteraImagem()">Mês <img id="order1" src="{% static 'imagens/seta_baixo.png' %}"></th>
-                <th class="tabela" onclick="w3.sortHTML('#tblAtv', '.item', 'td:nth-child(2)');alteraImagem()">Ano <img id="order2" src="{% static 'imagens/seta_baixo.png' %}"></th>
-                <th class="tabela" onclick="w3.sortHTML('#tblAtv', '.item', 'td:nth-child(3)');alteraImagem()">Publicador <img id="order3" src="{% static 'imagens/seta_baixo.png' %}"></th>
+                <th class="tabela" onclick="w3.sortHTML('#tblAtv', '.item', 'td:nth-child(1)');alteraImagem('order1')">Mês <img id="order1" src="{% static 'imagens/seta_baixo.png' %}"></th>
+                <th class="tabela" onclick="w3.sortHTML('#tblAtv', '.item', 'td:nth-child(2)');alteraImagem('order2')">Ano <img id="order2" src="{% static 'imagens/seta_baixo.png' %}"></th>
+                <th class="tabela" onclick="w3.sortHTML('#tblAtv', '.item', 'td:nth-child(3)');alteraImagem('order3')">Publicador <img id="order3" src="{% static 'imagens/seta_baixo.png' %}"></th>
                 <th>Publicações</th>
                 <th>Videos</th>
                 <th>Horas</th>

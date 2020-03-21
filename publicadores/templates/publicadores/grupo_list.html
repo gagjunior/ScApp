@@ -11,11 +11,11 @@
             <thead>
                 <tr class="w3-indigo">
                     {% load static %}
-                    <th class="tabela" onclick="w3.sortHTML('#tblPub', '.item', 'td:nth-child(1)');alteraImagem()">Nome
-                        do Grupo <img id="order" src="{% static 'imagens/seta_baixo.png' %}">
+                    <th class="tabela" onclick="w3.sortHTML('#tblPub', '.item', 'td:nth-child(1)');alteraImagem('order1')">Nome
+                        do Grupo <img id="order1" src="{% static 'imagens/seta_baixo.png' %}">
                     </th>
                     <th>Dirigente</th>
-                    <th>Local do Grupo</th>
+                    <th class="tabela" onclick="w3.sortHTML('#tblPub', '.item', 'td:nth-child(3)'); alteraImagem('order2')">Local do Grupo <img id="order2" src="{% static 'imagens/seta_baixo.png' %}"></th>
                     <th>Endereço</th>
                     <th>Dia da Saída</th>
                     <th>Horário</th>
