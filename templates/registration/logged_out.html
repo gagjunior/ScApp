@@ -1,0 +1,13 @@
+{% extends 'registration/layout_login.html' %}
+
+{% block content %}
+
+<div class="w3-container">
+    <div class="w3-panel w3-pale-blue w3-leftbar w3-border-blue">
+        <h2>Você saiu...</h2>
+        <p>Obrigador por usar o ScApp.</p>
+        <p>Para acessar novamente o sistema clique <a class="w3-button w3-ripple w3-indigo" href="{% url 'login' %}">aqui</a></p>
+    </div>
+</div>
+
+{% endblock %}

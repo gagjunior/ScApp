@@ -1,20 +1,6 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    {% load static %}
-    <link rel="stylesheet" href="{% static 'css/w3.css' %}">
-    <link rel="stylesheet" href="{% static 'css/site.css' %}">
+{% extends 'registration/layout_login.html' %}
 
-    <title>ScApp - Login</title>
-</head>
-<body>
-
-    <header class="cabecalho">
-        <p></p>
-    </header>
-    
+    {% block content %}
     <div class="w3-container login">
         <h1 class="w3-blue w3-center">-- ScApp --</h1>
         <br>
@@ -22,7 +8,7 @@
         <p>O ScApp, foi criado com o objetivo de ajudar na gestão dos publicadores da congregação</p>
         <p>Use suas credenciais de acesso no formulário abaixo para acessar o sistema</p>
         <hr>
-        
+
         {% load widget_tweaks%}
         <form class="w3-container" method="post" action="{% url 'login' %}">
             <h2>Login</h2>
@@ -48,13 +34,6 @@
         <hr>
         {% endif %}
     </div>
+    {% endblock %}
 
-    <footer class="rodape">
-        <p>&copy;ScApp</p>
-        <p id="data-atual"></p>
-    </footer>
-
-    <script src="{% static 'javascript/publicadores.js' %}"></script>
     
-</body>
-</html>

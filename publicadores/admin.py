@@ -9,7 +9,7 @@ class GrupoAdmin(admin.ModelAdmin):
 
 @admin.register(Publicador)
 class PublicadorAdmin(admin.ModelAdmin):
-    list_display = ('nome_publicador', 'genero', 'data_nascimento', 'esperanca_pub', 'data_batismo', 'atuacao_pub', 'privilegio_pub', 'grupo_pub', 'tel_fixo', 'tel_celular', 'endereco_pub')
+    list_display = ('nome_publicador', 'genero', 'data_nascimento', 'esperanca_pub', 'data_batismo', 'atuacao_pub', 'privilegio_pub', 'grupo_pub', 'tel_fixo', 'tel_celular')
 
     list_filter = ('grupo_pub', 'atuacao_pub', 'privilegio_pub', 'genero')
 

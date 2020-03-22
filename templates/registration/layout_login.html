@@ -4,34 +4,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-
     {% load static %}
     <link rel="stylesheet" href="{% static 'css/w3.css' %}">
     <link rel="stylesheet" href="{% static 'css/site.css' %}">
 
-
-
-    <title>ScApp - {{ titulo }}</title>
+    <title>ScApp</title>
 </head>
 
 <body>
 
-    <ul class="menu_nav">
-        <li><a href="{% url 'index' %}">Menu</a></li>
-        <li style="float: right;"><a href="{% url 'logout' %}">Sair</a></li>
-    </ul>
+    <header class="cabecalho">
+        <p></p>
+    </header>
 
     {% block content %}{% endblock %}
 
     <footer class="rodape">
         <p>&copy;ScApp</p>
-        <p>usuário: {{ user.get_username }}</p>
         <p id="data-atual"></p>
     </footer>
+
     <script src="{% static 'javascript/publicadores.js' %}"></script>
-    <script src="{% static 'javascript/w3.js' %}"></script>
+
 </body>
 
 </html>
