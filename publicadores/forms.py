@@ -10,3 +10,7 @@ class AtividadeForm(forms.Form):
     ano_inicio = forms.IntegerField(initial=ano_atual)
     mes_fim = forms.ChoiceField(choices=LISTA_MES, initial=mes_anterior)
     ano_fim = forms.IntegerField(initial=ano_atual)
+
+class ResumoForm(forms.Form):
+    mes_inicio = forms.ChoiceField(choices=LISTA_MES, initial=mes_anterior)
+    ano_inicio = forms.IntegerField(initial=ano_atual)

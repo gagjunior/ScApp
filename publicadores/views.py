@@ -3,20 +3,19 @@ from django.views import generic
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from publicadores.models import Grupo, Publicador, Atividade
-from publicadores.forms import AtividadeForm
+from publicadores.forms import AtividadeForm, ResumoForm
 
 
 @login_required
 def index(request):
     context = {
-        'titulo':'Menu'
+        'titulo': 'Menu'
     }
     return render(request, 'index.html', context=context)
 
 
 @login_required
-def lista_atividades(request):        
-    
+def lista_atividades(request):
     if request.method == "POST":
         form = AtividadeForm(request.POST)
 
@@ -26,25 +25,48 @@ def lista_atividades(request):
             mes_fim = form.cleaned_data['mes_fim']
             ano_fim = form.cleaned_data['ano_fim']
 
-            atividades_flt = Atividade.objects.filter(mes_relatorio__gte=mes_inicio, ano_relatorio__gte=ano_inicio, mes_relatorio__lte=mes_fim, ano_relatorio__lte=ano_fim)
+            atividades_flt = Atividade.objects.filter(
+                mes_relatorio__gte=mes_inicio, ano_relatorio__gte=ano_inicio, mes_relatorio__lte=mes_fim, ano_relatorio__lte=ano_fim)
 
             context = {
-                'form':form,
-                'atividades_flt':atividades_flt,
-                'titulo':'Lista de Atividades'
-            }            
+                'form': form,
+                'atividades_flt': atividades_flt,
+                'titulo': 'Lista de Atividades'
+            }
 
     else:
         form = AtividadeForm()
-        context = {'form':form}
-        
+        context = {'form': form}
+
     return render(request, 'publicadores/atividades_lista.html', context)
 
-    
+
+@login_required
+def resumo_mes_betel(request):
+    if request.method == "POST":
+        form = ResumoForm(request.POST)
+        if form.is_valid():
+            mes_inicio = form.cleaned_data['mes_inicio']
+            ano_inicio = form.cleaned_data['ano_inicio']            
+
+            atividades_flt = Atividade.objects.filter(
+                mes_relatorio=mes_inicio, ano_relatorio=ano_inicio)
+
+            context = {
+                'form': form,
+                'atividades_flt': atividades_flt,
+                'titulo': 'Resumo de Atividades'
+            }
+
+    else:
+        form = ResumoForm()
+        context = {'form': form}
+
+    return render(request, 'publicadores/resumo_mes_betel.html', context)
 
 
 class GruposListView(LoginRequiredMixin, generic.ListView):
-    model= Grupo
+    model = Grupo
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super(GruposListView, self).get_context_data(**kwargs)
@@ -60,14 +82,12 @@ class PublicadoresListView(LoginRequiredMixin, generic.ListView):
         context['titulo'] = 'Lista de Publicadores'
         return context
 
+
 class PublicadoresDetailView(LoginRequiredMixin, generic.DetailView):
     model = Publicador
 
     def get_context_data(self, **kwargs):
-        context = super(PublicadoresDetailView, self).get_context_data(**kwargs)
+        context = super(PublicadoresDetailView,
+                        self).get_context_data(**kwargs)
         context['titulo'] = 'Publicador'
         return context
-
-
-
-    

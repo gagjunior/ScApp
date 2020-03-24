@@ -15,4 +15,5 @@ urlpatterns = [
 
     #Urls referente as atividades
     path('atividades/', views.lista_atividades, name='atividades_lista'),
+    path('resumo_mes/', views.resumo_mes_betel, name='resumo_mes_betel'),
 ]
