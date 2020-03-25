@@ -58,6 +58,10 @@
     margin-top: 20px;
 }
 
+.qd-resumo-bt{
+    margin: 2px;
+}
+
 @media only screen and (min-width: 1024px){
     .login{
         max-width: 33.33%;

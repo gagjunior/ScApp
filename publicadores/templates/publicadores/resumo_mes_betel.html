@@ -13,16 +13,68 @@
     <div class="w3-container w3-cell w3-mobile">
         <label for="form.id_for_label">Ano Inicio</label>
         {% render_field form.ano_inicio class="w3-input" %}
-    </div>    
+    </div>
     <div class="w3-container w3-cell w3-mobile">
-        <button type="submit" class="w3-button w3-blue item-pesq"><img src="{% static 'imagens/lupa_pesquisa.png' %}">
+        <button type="submit" class="w3-button w3-blue itb-pesq"><img src="{% static 'imagens/lupa_pesquisa.png' %}">
             Pesquisar</button>
     </div>
 </form>
 
-{% if atividades_flt %}
+{% if atividades_resumo %}
 
-<p>Deu certo</p>
+<div class="w3-row">
+    <div class="w3-card w3-quarter qd-resumo-bt">
+        <header class="w3-container w3-indigo">
+            <h2>Publicadores</h2>
+        </header>
+        <div class="w3-container">
+            <p><b>Total que relatou: </b>{{ pub_qtd_relat }}</p>
+            <p><b>Publicações: </b>{{ pub_total_public.publicacoes__sum }}</p>
+            <p><b>Horas: </b>{{ pub_total_horas.horas__sum }}</p>
+            <p><b>Revisitas: </b>{{ pub_total_revis.revisitas__sum }}</p>
+            <p><b>Estudos: </b>{{ pub_total_estud.estudos__sum }}</p>
+        </div>
+    </div>
+
+    <div class="w3-card w3-quarter qd-resumo-bt">
+        <header class="w3-container w3-indigo">
+            <h2>Pioneiros Auxiliares</h2>
+        </header>
+        <div class="w3-container">
+            <p><b>Total que relatou: </b>{{ aux_qtd_relat }}</p>
+            <p><b>Publicações: </b>{{ aux_total_public.publicacoes__sum }}</p>
+            <p><b>Horas: </b>{{ aux_total_horas.horas__sum }}</p>
+            <p><b>Revisitas: </b>{{ aux_total_revis.revisitas__sum }}</p>
+            <p><b>Estudos: </b>{{ aux_total_estud.estudos__sum }}</p>
+        </div>
+    </div>
+
+    <div class="w3-card w3-quarter qd-resumo-bt">
+        <header class="w3-container w3-indigo">
+            <h2>Pioneiros Regulares</h2>
+        </header>
+        <div class="w3-container">
+            <p><b>Total que relatou: </b>{{ reg_qtd_relat }}</p>
+            <p><b>Publicações: </b>{{ reg_total_public.publicacoes__sum }}</p>
+            <p><b>Horas: </b>{{ reg_total_horas.horas__sum }}</p>
+            <p><b>Revisitas: </b>{{ reg_total_revis.revisitas__sum }}</p>
+            <p><b>Estudos: </b>{{ reg_total_estud.estudos__sum }}</p>
+        </div>
+    </div>
+
+    <div class="w3-card w3-quarter qd-resumo-bt">
+        <header class="w3-container w3-indigo">
+            <h2>Total Geral Mês</h2>
+        </header>
+        <div class="w3-container">
+            <p><b>Total que relatou: </b>{{ qtd_relat }}</p>
+            <p><b>Publicações: </b>{{ total_public.publicacoes__sum }}</p>
+            <p><b>Horas: </b>{{ total_horas.horas__sum }}</p>
+            <p><b>Revisitas: </b>{{ total_revis.revisitas__sum }}</p>
+            <p><b>Estudos: </b>{{ total_estud.estudos__sum }}</p>
+        </div>
+    </div>
+</div>
 
 {% endif %}
 
