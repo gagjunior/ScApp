@@ -12,7 +12,7 @@ def index(request):
     context = {
         'titulo': 'Menu'
     }
-    return render(request, 'index.html', context=context)
+    return render(request, 'index.html', context)
 
 
 @login_required
@@ -88,6 +88,10 @@ def resumo_mes_betel(request):
             total_horas= atividades_resumo.aggregate(Sum('horas'))
             total_revis= atividades_resumo.aggregate(Sum('revisitas'))
             total_estud= atividades_resumo.aggregate(Sum('estudos'))
+
+            mensagem_titulo = 'Aviso!'
+            mensagem_corpo1 = 'Não houve informações a listar para o periodo solicitado.'
+            mensagem_corpo2 = 'Favor verificar os critérios de pesquisa.'
             
             context = {
                 'form': form,
@@ -122,13 +126,26 @@ def resumo_mes_betel(request):
                 'total_revis': total_revis,
                 'total_estud': total_estud,
 
+                'mensagem_titulo': mensagem_titulo,
+                'mensagem_corpo1': mensagem_corpo1,
+                'mensagem_corpo2': mensagem_corpo2,
+
                 'titulo': 'Resumo Atividades'
             }
 
     else:
         form = ResumoForm()
+
+        mensagem_titulo = 'Resumo para Betel'
+        mensagem_corpo1 = 'Para visualizar as informações selecione o ano e o mês desejado.'
+        mensagem_corpo2 = 'Essas informações devem ser enviadas para Betel até no máximo dia 20 do mês subsequente.'
+
         context = {
             'form': form,
+            'mensagem_titulo': mensagem_titulo,
+            'mensagem_corpo1': mensagem_corpo1,
+            'mensagem_corpo2': mensagem_corpo2,
+            
             'titulo': 'Resumo Atividades'       
         }
 
