@@ -21,18 +21,33 @@
 </form>
 
 <div class="w3-container">
-    <h2>Lista de publicadores que não relataram</h2>
-    {% if nao_relatou %}
+    <h2>Não relataram em {{ desc_mes }} de {{ form.ano_inicio.value }}</h2>
+
+    {% if nao_relatou %}    
     <div class="w3-responsive">
-
-        {% for publicador in nao_relatou %}
-
-        <p>{{ publicador.nome_publicador }} - {{ publicador.grupo_pub }}</p>
-
-        {% endfor %}
-
-        {% endif %}
+        <input oninput="w3.filterHTML('#tblNRelat', '.item', this.value)" class="w3-input"
+            placeholder="Digite o nome do grupo para filtrar" style="margin-bottom: 16px;">
+        <table id="tblNRelat" class="w3-table-all w3-hoverable">
+            <thead>
+                <tr class="w3-indigo">
+                    <th class="tabela" onclick="w3.sortHTML('#tblNRelat', '.item', 'td:nth-child(1)');alteraImagem('order1')">Nome do publicador <img id="order1" src="{% static 'imagens/seta_baixo.png' %}"></th>
+                    <th class="tabela" onclick="w3.sortHTML('#tblNRelat', '.item', 'td:nth-child(2)');alteraImagem('order2')">Grupo do publicador <img id="order2" src="{% static 'imagens/seta_baixo.png' %}"></th>
+                    <th>Nº Celular do publicador</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for publicador in nao_relatou %}
+                <tr class="item">
+                    <td>{{ publicador.nome_publicador }}</td>
+                    <td>{{ publicador.grupo_pub }}</td>
+                    <td>{{ publicador.tel_celular }}</td>
+                </tr>
+                {% endfor %}           
+            </tbody>
+        </table>       
     </div>
+    {% endif %}
+
 </div>
 
 {% endblock %}

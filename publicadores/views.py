@@ -3,6 +3,7 @@ from django.views import generic
 from django.db.models import Sum
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
+from publicadores import LISTA_MES
 from publicadores.models import Grupo, Publicador, Atividade
 from publicadores.forms import AtividadeForm, ResumoForm, NaoRelatouForm
 
@@ -164,9 +165,13 @@ def lista_nao_relatou(request):
                 atividade__in=Atividade.objects.filter(mes_relatorio=mes_inicio, ano_relatorio=ano_inicio)
             )
 
+            dicionario_mes = dict(LISTA_MES)
+            desc_mes = dicionario_mes[int(mes_inicio)]
+
             context = {
                 'form': form,
                 'nao_relatou': nao_relatou,
+                'desc_mes': desc_mes,
                 'titulo': 'Não Relatou'
             }
     else:
