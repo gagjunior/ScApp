@@ -1,0 +1,38 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+
+<form method="POST" class="w3-cell-row" style="margin-bottom: 12px;">
+    {% csrf_token %}
+    {% load widget_tweaks%}
+    {% load static %}
+    <div class="w3-container w3-cell w3-mobile">
+        <label for="form.id_for_label">Mês Inicio</label>
+        {% render_field form.mes_inicio class="w3-select" %}
+    </div>
+    <div class="w3-container w3-cell w3-mobile">
+        <label for="form.id_for_label">Ano Inicio</label>
+        {% render_field form.ano_inicio class="w3-input" %}
+    </div>
+    <div class="w3-container w3-cell w3-mobile">
+        <button type="submit" class="w3-button w3-blue itb-pesq"><img src="{% static 'imagens/lupa_pesquisa.png' %}">
+            Pesquisar</button>
+    </div>
+</form>
+
+<div class="w3-container">
+    <h2>Lista de publicadores que não relataram</h2>
+    {% if nao_relatou %}
+    <div class="w3-responsive">
+
+        {% for publicador in nao_relatou %}
+
+        <p>{{ publicador.nome_publicador }} - {{ publicador.grupo_pub }}</p>
+
+        {% endfor %}
+
+        {% endif %}
+    </div>
+</div>
+
+{% endblock %}

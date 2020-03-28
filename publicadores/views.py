@@ -4,7 +4,7 @@ from django.db.models import Sum
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from publicadores.models import Grupo, Publicador, Atividade
-from publicadores.forms import AtividadeForm, ResumoForm
+from publicadores.forms import AtividadeForm, ResumoForm, NaoRelatouForm
 
 
 @login_required
@@ -150,6 +150,33 @@ def resumo_mes_betel(request):
         }
 
     return render(request, 'publicadores/resumo_mes_betel.html', context)
+
+
+@login_required
+def lista_nao_relatou(request):
+    if request.method == 'POST':
+        form = NaoRelatouForm(request.POST)
+        if form.is_valid():
+            mes_inicio = form.cleaned_data['mes_inicio']
+            ano_inicio = form.cleaned_data['ano_inicio']
+
+            nao_relatou = Publicador.objects.exclude(
+                atividade__in=Atividade.objects.filter(mes_relatorio=mes_inicio, ano_relatorio=ano_inicio)
+            )
+
+            context = {
+                'form': form,
+                'nao_relatou': nao_relatou,
+                'titulo': 'Não Relatou'
+            }
+    else:
+        form = NaoRelatouForm()
+        context = {
+            'form': form,
+            'titulo': 'Não Relatou'
+        }
+
+    return render(request, 'publicadores/nao_relatou.html', context)
 
 
 class GruposListView(LoginRequiredMixin, generic.ListView):

@@ -14,3 +14,9 @@ class AtividadeForm(forms.Form):
 class ResumoForm(forms.Form):
     mes_inicio = forms.ChoiceField(choices=LISTA_MES, initial=mes_anterior)
     ano_inicio = forms.IntegerField(initial=ano_atual)
+
+class NaoRelatouForm(forms.Form):
+    mes_inicio = forms.ChoiceField(choices=LISTA_MES, initial=mes_anterior)
+    ano_inicio = forms.IntegerField(initial=ano_atual)
+
+
