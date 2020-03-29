@@ -172,7 +172,7 @@ def lista_nao_relatou(request):
                 'form': form,
                 'nao_relatou': nao_relatou,
                 'desc_mes': desc_mes,
-                'titulo': 'Não Relatou'
+                'titulo': 'Lista Irregulares'
             }
     else:
         form = NaoRelatouForm()

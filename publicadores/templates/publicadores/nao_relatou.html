@@ -20,10 +20,10 @@
     </div>
 </form>
 
-<div class="w3-container">
-    <h2>Não relataram em {{ desc_mes }} de {{ form.ano_inicio.value }}</h2>
+<div class="w3-container">   
 
-    {% if nao_relatou %}    
+    {% if nao_relatou %}
+    <h2>Publicadores Irregulares em: {{ desc_mes }} de {{ form.ano_inicio.value }}</h2>
     <div class="w3-responsive">
         <input oninput="w3.filterHTML('#tblNRelat', '.item', this.value)" class="w3-input"
             placeholder="Digite o nome do grupo para filtrar" style="margin-bottom: 16px;">
