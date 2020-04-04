@@ -21,8 +21,5 @@ class NaoRelatouForm(forms.Form):
     mes_inicio = forms.ChoiceField(choices=LISTA_MES, initial=mes_anterior)
     ano_inicio = forms.IntegerField(initial=ano)
 
-class ListaInativos(forms.Form):
-    mes_pesquisa = forms.ChoiceField(choices=LISTA_MES, initial=mes_referencia)
-    ano_pesquisa = forms.IntegerField(initial=ano_referencia)
 
 

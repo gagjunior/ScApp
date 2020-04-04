@@ -5,9 +5,9 @@ from django.db.models import Sum
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 # Importações pacote Publicadores
-from publicadores import LISTA_MES, data_atual
+from publicadores import LISTA_MES, data_atual, num_seis_meses, ano_seis_meses
 from publicadores.models import Grupo, Publicador, Atividade
-from publicadores.forms import AtividadeForm, ResumoForm, NaoRelatouForm, ListaInativos
+from publicadores.forms import AtividadeForm, ResumoForm, NaoRelatouForm
 
 
 @login_required
@@ -195,27 +195,20 @@ def lista_nao_relatou(request):
 @login_required
 def lista_inativos(request):
     titulo = 'Lista de Inativos'
-    if request.method == 'POST':
-        form = ListaInativos(request.POST)
-        if form.is_valid():
-            mes_pesquisa = form.cleaned_data['mes_pesquisa']
-            ano_pesquisa = form.cleaned_data['ano_pesquisa']
 
-            pub_inativos = Publicador.objects.exclude(
-                atividade__in= Atividade.objects.filter(mes_relatorio__gte=mes_pesquisa, ano_relatorio=ano_pesquisa)
+    dicionario_mes = dict(LISTA_MES)
+    desc_mes = dicionario_mes[int(num_seis_meses)]
+
+    inativos = Publicador.objects.exclude(
+                atividade__in= Atividade.objects.filter(mes_relatorio__gte=num_seis_meses, ano_relatorio=ano_seis_meses)
             )
-
-            context = {
-                'form': form,
-                'pub_inativos': pub_inativos,
-                'titulo': titulo
-            }
-    else:
-        form = ListaInativos()
-        context = {
-            'form': form,
-            'titulo': titulo
-        }
+    
+    context = {
+        'mes': desc_mes,
+        'ano': ano_seis_meses,
+        'inativos': inativos,
+        'titulo': titulo
+    }
     
     return render(request, 'publicadores/lista_inativos.html', context)
 

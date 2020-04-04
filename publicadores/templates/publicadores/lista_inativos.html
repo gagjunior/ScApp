@@ -2,23 +2,13 @@
 
 {% block content %}
 
-<form method="POST" class="w3-cell-row" style="margin-bottom: 12px;">
-    {% csrf_token %}
-    {% load widget_tweaks%}
-    {% load static %}
-    <div class="w3-container w3-cell w3-mobile">
-        <label for="form.id_for_label">Mês Inicio</label>
-        {% render_field form.mes_pesquisa class="w3-select" %}
+<div class="w3-container">
+    <h2>Lista de Inativos</h2>
+    <div class="w3-panel w3-indigo w3-topbar w3-bottombar w3-border-amber">
+        <p>Publicadores inativos são aqueles que estão a mais de 6 mêses sem relatar serviço de campo, ou seja desde <span class="negrito">{{ mes }}</span> de <span class="negrito">{{ ano }}</span></p>
+        <p>Abaixo segue a lista dos publicadores inativos:</p>
     </div>
-    <div class="w3-container w3-cell w3-mobile">
-        <label for="form.id_for_label">Ano Inicio</label>
-        {% render_field form.ano_pesquisa class="w3-input" %}
-    </div>
-    <div class="w3-container w3-cell w3-mobile">
-        <button type="submit" class="w3-button w3-blue itb-pesq"><img src="{% static 'imagens/lupa_pesquisa.png' %}">
-            Pesquisar</button>
-    </div>
-</form>
+</div>
 
 
 {% endblock %}

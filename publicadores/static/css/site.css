@@ -62,6 +62,10 @@
     margin: 4px;
 }
 
+.negrito{
+    font-weight: bold;
+}
+
 @media only screen and (min-width: 1024px){
     .login{
         max-width: 33.33%;
