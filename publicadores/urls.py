@@ -17,4 +17,5 @@ urlpatterns = [
     path('atividades/', views.lista_atividades, name='atividades_lista'),
     path('resumo_mes/', views.resumo_mes_betel, name='resumo_mes_betel'),
     path('nao_relatou/', views.lista_nao_relatou, name='lista_nao_relatou'),
+    path('lista_inativos/', views.lista_inativos, name='lista_inativos'),
 ]

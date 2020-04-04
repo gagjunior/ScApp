@@ -2,10 +2,10 @@ import uuid
 from datetime import date
 from django.db import models
 from django.urls import reverse
-from publicadores import data_atual, LISTA_MES
+from publicadores import LISTA_MES, num_mes_anterior, ano_mes_anterior
 
-mes_anterior = data_atual.month - 1
-ano_atual = data_atual.year
+mes_anterior = num_mes_anterior
+ano = ano_mes_anterior
 
 class Grupo(models.Model):
     id_grupo = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
@@ -83,7 +83,7 @@ class Atividade(models.Model):
     id_atividade = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
    
     mes_relatorio = models.IntegerField(verbose_name='Mês', choices= LISTA_MES, default=mes_anterior)
-    ano_relatorio = models.IntegerField(verbose_name='Ano', default=ano_atual)
+    ano_relatorio = models.IntegerField(verbose_name='Ano', default=ano)
     publicador = models.ForeignKey('Publicador', on_delete=models.DO_NOTHING)
     publicacoes = models.IntegerField(verbose_name='Publicações')
     videos = models.IntegerField(verbose_name='Vídeos')

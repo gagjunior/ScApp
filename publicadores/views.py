@@ -1,11 +1,13 @@
+# Importações Django
 from django.shortcuts import render
 from django.views import generic
 from django.db.models import Sum
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
-from publicadores import LISTA_MES
+# Importações pacote Publicadores
+from publicadores import LISTA_MES, data_atual
 from publicadores.models import Grupo, Publicador, Atividade
-from publicadores.forms import AtividadeForm, ResumoForm, NaoRelatouForm
+from publicadores.forms import AtividadeForm, ResumoForm, NaoRelatouForm, ListaInativos
 
 
 @login_required
@@ -18,6 +20,7 @@ def index(request):
 
 @login_required
 def lista_atividades(request):
+    titulo = 'Lista de Atividades'
     if request.method == "POST":
         form = AtividadeForm(request.POST)
 
@@ -33,18 +36,22 @@ def lista_atividades(request):
             context = {
                 'form': form,
                 'atividades_flt': atividades_flt,
-                'titulo': 'Lista de Atividades'
+                'titulo': titulo
             }
 
     else:
         form = AtividadeForm()
-        context = {'form': form}
+        context = {
+            'form': form,
+            'titulo': titulo
+        }
 
     return render(request, 'publicadores/atividades_lista.html', context)
 
 
 @login_required
 def resumo_mes_betel(request):
+    titulo = 'Resumo de Atividades'
     if request.method == "POST":
         form = ResumoForm(request.POST)
         if form.is_valid():
@@ -131,7 +138,7 @@ def resumo_mes_betel(request):
                 'mensagem_corpo1': mensagem_corpo1,
                 'mensagem_corpo2': mensagem_corpo2,
 
-                'titulo': 'Resumo Atividades'
+                'titulo': titulo
             }
 
     else:
@@ -147,7 +154,7 @@ def resumo_mes_betel(request):
             'mensagem_corpo1': mensagem_corpo1,
             'mensagem_corpo2': mensagem_corpo2,
             
-            'titulo': 'Resumo Atividades'       
+            'titulo': titulo
         }
 
     return render(request, 'publicadores/resumo_mes_betel.html', context)
@@ -155,6 +162,7 @@ def resumo_mes_betel(request):
 
 @login_required
 def lista_nao_relatou(request):
+    titulo = 'Lista de Irregulares'
     if request.method == 'POST':
         form = NaoRelatouForm(request.POST)
         if form.is_valid():
@@ -172,41 +180,69 @@ def lista_nao_relatou(request):
                 'form': form,
                 'nao_relatou': nao_relatou,
                 'desc_mes': desc_mes,
-                'titulo': 'Lista Irregulares'
+                'titulo': titulo
             }
     else:
         form = NaoRelatouForm()
         context = {
             'form': form,
-            'titulo': 'Não Relatou'
+            'titulo': titulo
         }
 
     return render(request, 'publicadores/nao_relatou.html', context)
 
 
+@login_required
+def lista_inativos(request):
+    titulo = 'Lista de Inativos'
+    if request.method == 'POST':
+        form = ListaInativos(request.POST)
+        if form.is_valid():
+            mes_pesquisa = form.cleaned_data['mes_pesquisa']
+            ano_pesquisa = form.cleaned_data['ano_pesquisa']
+
+            pub_inativos = Publicador.objects.exclude(
+                atividade__in= Atividade.objects.filter(mes_relatorio__gte=mes_pesquisa, ano_relatorio=ano_pesquisa)
+            )
+
+            context = {
+                'form': form,
+                'pub_inativos': pub_inativos,
+                'titulo': titulo
+            }
+    else:
+        form = ListaInativos()
+        context = {
+            'form': form,
+            'titulo': titulo
+        }
+    
+    return render(request, 'publicadores/lista_inativos.html', context)
+
+
 class GruposListView(LoginRequiredMixin, generic.ListView):
     model = Grupo
-
+    titulo = 'Lista de Grupos'
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super(GruposListView, self).get_context_data(**kwargs)
-        context['titulo'] = 'Lista de Grupos'
+        context['titulo'] = self.titulo
         return context
 
 
 class PublicadoresListView(LoginRequiredMixin, generic.ListView):
     model = Publicador
-
+    titulo = 'Lista de Publicadores'
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super(PublicadoresListView, self).get_context_data(**kwargs)
-        context['titulo'] = 'Lista de Publicadores'
+        context['titulo'] = self.titulo
         return context
 
 
 class PublicadoresDetailView(LoginRequiredMixin, generic.DetailView):
     model = Publicador
-
+    titulo = 'Publicador'
     def get_context_data(self, **kwargs):
         context = super(PublicadoresDetailView,
                         self).get_context_data(**kwargs)
-        context['titulo'] = 'Publicador'
+        context['titulo'] = self.titulo
         return context
